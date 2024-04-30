@@ -13,6 +13,11 @@ Jenkins 버전은 2.441 이고 이전 버전에 모두 영향을 미칩니다.
 - <https://mp.weixin.qq.com/s/2a4NXRkrXBDhcL9gZ3XQyw>
 
 ## 취약한 환경 시작
+docker-compose.yml 가 존재하는 디렉토리에서
+
+```
+docker compose up -d
+```
 
 ![](1.png)
 
